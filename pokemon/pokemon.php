@@ -104,31 +104,31 @@ class PokemonPlante extends Pokemon {
     }
 }
 
-// Création des attaques
+
 $flammeche = new AttackPokemon(15, 25, 2, 30);
 $hydrocanon = new AttackPokemon(20, 30, 1.8, 25);
 $fouetLianes = new AttackPokemon(10, 20, 2.5, 20);
 
-// Création des Pokémons
-$dracaufeu = new PokemonFeu('Dracaufeu', 'dracaufeu.jpg', 120, $flammeche);
-$tortank = new PokemonEau('Tortank', 'tortank.jpg', 130, $hydrocanon);
-$florizarre = new PokemonPlante('Florizarre', 'florizarre.jpg', 110, $fouetLianes);
 
-// Fonction de combat
+$dracaufeu = new PokemonFeu('Dracaufeu', 'C:\xampp\htdocs\tp_php\pokemon\images\dracaufeu.png', 120, $flammeche);
+$tortank = new PokemonEau('Tortank', 'C:\xampp\htdocs\tp_php\pokemon\images\tortank.jpg', 130, $hydrocanon);
+$florizarre = new PokemonPlante('Florizarre', 'C:\xampp\htdocs\tp_php\pokemon\images\florizarre.png', 110, $fouetLianes);
+
+
 function combat(Pokemon $p1, Pokemon $p2) {
     $tour = 1;
     
     while(!$p1->isDead() && !$p2->isDead()) {
         echo "<h3>Tour $tour</h3>";
         
-        // Attaque du premier Pokémon
+        
         $degats = $p1->attack($p2);
         echo "{$p1->getName()} attaque → {$p2->getName()} (-$degats PV)<br>";
         echo $p2->whoAml()."<br><br>";
         
         if($p2->isDead()) break;
         
-        // Contre-attaque
+        
         $degats = $p2->attack($p1);
         echo "{$p2->getName()} contre-attaque → {$p1->getName()} (-$degats PV)<br>";
         echo $p1->whoAml()."<br><hr>";
@@ -140,6 +140,6 @@ function combat(Pokemon $p1, Pokemon $p2) {
     echo "<h2>Vainqueur : {$vainqueur->getName()} avec {$vainqueur->getHp()} PV restants!</h2>";
 }
 
-// Lancement du combat
+
 combat($dracaufeu, $tortank);
 ?>
